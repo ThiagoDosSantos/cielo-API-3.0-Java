@@ -11,8 +11,46 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>15</java.version>		
   </properties>
+	
+	
+  <build>
+    <plugins>
+
+		<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+        	<artifactId>maven-clean-plugin</artifactId>
+            <version>3.1.0</version>
+		</plugin>
+                
+                <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+        	<artifactId>maven-resources-plugin</artifactId>
+            <version>3.1.0</version>
+		</plugin>
+
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+			<configuration>
+				<release>${java.version}</release>
+				<encoding>UTF-8</encoding>
+				<compilerArgs>
+					--enable-preview
+					<arg>-XDignore.symbol.file</arg>
+                </compilerArgs>
+			</configuration>
+		</plugin>      
+    </plugins>
+  </build>
+  
+  
+
 
   <dependencies>
     <dependency>
@@ -24,12 +62,12 @@
     <dependency>
   		<groupId>com.google.code.gson</groupId>
   		<artifactId>gson</artifactId>
-  		<version>2.6</version>
+  		<version>2.10.1</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.httpcomponents</groupId>
   		<artifactId>httpclient</artifactId>
-  		<version>4.5.2</version>
+  		<version>4.5.14</version>
   	</dependency>
   </dependencies>
 </project>
