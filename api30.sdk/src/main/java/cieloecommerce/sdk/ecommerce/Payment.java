@@ -83,6 +83,8 @@ public class Payment {
 	private String instructions;
 	@SerializedName("AuthenticationUrl")
 	private String authenticationUrl;
+	@SerializedName("VoidedAmount")
+	private String voidedAmount;
 	
 
 	public Payment(Integer amount, Integer installments) {
@@ -428,6 +430,11 @@ public class Payment {
 	public String getUrl() {
 		return url;
 	}
+	
+	public String getVoidedAmount() {
+		return voidedAmount;
+	}
+	
 
 	public enum Provider {
 		Bradesco, BancoDoBrasil, Simulado
