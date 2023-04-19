@@ -112,7 +112,7 @@ public abstract class AbstractSaleRequest<Request, Response> {
 		Response response = null;
 		Gson gson = new Gson();
 
-		System.out.println(responseBody);
+		
 
 		switch (statusCode) {
 		case 200:
@@ -124,7 +124,7 @@ public abstract class AbstractSaleRequest<Request, Response> {
 			CieloError[] errors = gson.fromJson(responseBody, CieloError[].class);
 
 			for (CieloError error : errors) {
-				System.out.printf("%s: %s", "Cielo Error [" + error.getCode() + "]", error.getMessage());
+				
 
 				exception = new CieloRequestException(error.getMessage(), error, exception);
 			}
@@ -133,7 +133,7 @@ public abstract class AbstractSaleRequest<Request, Response> {
 		case 404:
 			throw new CieloRequestException("Not found", new CieloError(404, "Not found"), null);
 		default:
-			System.out.printf("%s: %s", "Cielo", "Unknown status: " + statusCode);
+			
 		}
 
 		return response;
